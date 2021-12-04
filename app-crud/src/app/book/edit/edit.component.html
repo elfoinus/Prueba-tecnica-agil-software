@@ -1,0 +1,96 @@
+<div class="container">
+  
+    <div class="d-flex justify-content-between">
+      <h4>Editar Libro</h4>
+      <a href="#" routerLink="/book/index" class="btn btn-primaryt">Atras</a>
+    </div>
+
+    <hr>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+  
+        <div class="form-group row">
+            <div class="col-md-6 " >
+              <label for="title">Titulo:</label>
+              <input 
+                [(ngModel)]="book.Titulo"
+                formControlName="Titulo"
+                id="Titulo"
+                type="text"
+                class="form-control">
+              <div *ngIf="f.Titulo.touched && f.Titulo.invalid" class="alert alert-danger">
+                  <div *ngIf="f.Titulo.errors.required">*titulo es requerido.</div>
+              </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-md-6 ">
+            <label for="autor">Autor:</label>
+            <input
+              [(ngModel)]="book.Autor"  
+              formControlName="Autor"
+              id="Autor"
+              type="text"
+              class="form-control">
+            <div *ngIf="f.Autor.touched && f.Autor.invalid" class="alert alert-danger">
+                <div *ngIf="f.Autor.errors.required">*autor es requerido.</div>
+            </div>
+          </div>
+      </div>
+
+        <div class="form-group row">
+          <div class="col-md-6 ">
+            <label for="fecha">Fecha:</label>
+            <input
+            type='year'
+              [(ngModel)]="book.Fecha"
+              formControlName="Fecha"
+              id="Fecha"
+              type="text"
+              class="form-control">
+            <div *ngIf="f.Fecha.touched && f.Fecha.invalid" class="alert alert-danger">
+                <div *ngIf="f.Fecha.errors.required">*fecha es requerido.</div>
+                <div *ngIf="f.Fecha.errors.min">*fecha debe ser mayor o igual al año 2000.</div>
+                <div *ngIf="f.Fecha.errors.Fecha">*La fecha solo debe contener números.</div>
+            </div>
+          </div>
+      </div>
+
+        <div class="form-group row">
+            <div class="col-md-6 ">
+              <label for="costo">Costo:</label>
+              <input
+                [(ngModel)]="book.Costo"
+                formControlName="Costo"
+                id="Costo"
+                type="text"
+                class="form-control">
+              <div *ngIf="f.Costo.touched && f.Costo.invalid" class="alert alert-danger">
+                  <div *ngIf="f.Costo.errors.required">*costo es requerido.</div>
+                  <div *ngIf="f.Costo.errors.min">*Costo debe ser mayor o igual 0.</div>
+                  <div *ngIf="f.Costo.errors.Costo">*El costo solo debe contener números.</div>
+              </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-md-6 ">
+            <label for="PrecioSugerido">Precio Sugerido:</label>
+            <input
+              [(ngModel)]="book.PrecioSugerido"
+              formControlName="PrecioSugerido"
+              id="PrecioSugerido"
+              type="text"
+              class="form-control">
+            <div *ngIf="f.PrecioSugerido.touched && f.PrecioSugerido.invalid" class="alert alert-danger">
+                <div *ngIf="f.PrecioSugerido.errors.required">*precio sugerido es requerido.</div>
+                <div *ngIf="f.PrecioSugerido.errors.min">*precio sugerido debe ser mayor o igual 0.</div>
+                <div *ngIf="f.PrecioSugerido.errors.PrecioSugerido">*El precio sugerido  solo debe contener números.</div>
+            </div>
+          </div>
+      </div>
+
+      <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Actualizar</button>
+    </form>
+</div>

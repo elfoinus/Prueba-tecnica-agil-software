@@ -1,0 +1,33 @@
+<section>
+
+    <div class="d-flex justify-content-between">
+      <h4>Lista de Libros</h4>
+      <a routerLink="/book/create" class="btn btn-success">Crear nuevo libro</a>
+    </div>
+
+    <br>
+    
+    <table class="table ">
+      <tr>
+        <th>ID</th>
+        <th>Titulo</th>
+        <th>Fecha</th>
+        <th>Costo</th>
+        <th>Preco sugerido</th>
+        <th>Autor</th>
+        <th width="220px">Acciones</th>
+      </tr>
+      <tr *ngFor="let book of books">
+        <td>{{ book.IdLibro }}</td>
+        <td>{{ book.Titulo }}</td>
+        <td>{{ book.Fecha }}</td>
+        <td>{{ book.Costo }}</td>
+        <td>{{ book.PrecioSugerido }}</td>
+        <td>{{ book.Autor }}</td>
+        <td>
+          <a href="#" [routerLink]="['/book/', 'edit', book.IdLibro  ]" class="btn btn-primary">Editar</a>
+          <button type="button" (click)="deleteBook(book.IdLibro)" class="btn btn-danger">Eliminar</button>
+        </td>
+      </tr>
+    </table>
+ </section>
